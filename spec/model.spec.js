@@ -61,5 +61,15 @@ describe("barebone", function() {
             m.trigger('winning');
             expect(winning).toBe(true);
         });
+
+        it('trigger this', function() {
+            var m = new Barbone.Model();
+            var foo;
+            m.bind('foo', function() {foo = this.get('foo');});
+            m.set({foo: 'bananas'});
+            m.trigger('foo');
+            expect(foo).toBe('bananas');
+        });
+
     });
 });

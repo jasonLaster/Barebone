@@ -40,7 +40,7 @@ Barebone.Events = {
 
     for (i = 0, l = callbacks.length; i < l; i++) {
       var callback = callbacks[i];
-      callback.apply();
+      callback.apply(this);
     }
   }
 }
