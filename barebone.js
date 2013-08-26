@@ -7,6 +7,12 @@ Barebone.Model = function() {
 }
 
 _.extend(Barebone.Model.prototype, {
+
+  set: function(attributes) {
+    _.extend(this.attributes, attributes);
+    return this;
+  }
+
 });
 
 
