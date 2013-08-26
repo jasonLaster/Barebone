@@ -28,6 +28,23 @@ describe("barebone", function() {
 		expect(def.attributes).toEqual(values);
 	});
 
+    it('defaults doesnt trigger change event', function() {
+        var values = {
+            foo: 'bananas',
+            bars: 'pears'
+        };
+
+        var Def = Barbone.Model.extend({
+            defaults: values
+        });
+
+        var def = new Def();
+        var changed = false;
+        def.bind('change:foo', function() {changed = true;})
+
+        expect(changed).toBe(false);
+    })
+
 	it('set', function() {
 		var values = {
 			foo: 'bananas',

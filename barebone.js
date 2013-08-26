@@ -8,7 +8,7 @@ Barebone.Model = function(attributes) {
 
   this.events = {};
   this.attributes = {};
-  this.set(this.defaults);
+  this.set(this.defaults, {silent: true});
   this.initialize(attributes);
 }
 
@@ -17,8 +17,9 @@ _.extend(Barebone.Model.prototype, {
   initialize: function() {},
 
 
-  set: function(attributes) {
+  set: function(attributes, options) {
 
+    options || (options = {});
     var now = this.attributes;
 
     for(var attr in attributes) {
@@ -26,7 +27,9 @@ _.extend(Barebone.Model.prototype, {
 
       if (now[attr] != value) {
         this.attributes[attr] = value;
-        this.trigger('change:'+attr, this, value);
+        if (!options['silent']) {
+          this.trigger('change:'+attr, this, value);
+        }
       }
 
     }
