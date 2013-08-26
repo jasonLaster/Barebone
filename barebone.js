@@ -37,10 +37,11 @@ Barebone.Events = {
 
   trigger: function(event) {
     var callbacks = this.events[event];
+    var args = Array.prototype.slice.call(arguments, 1);
 
     for (i = 0, l = callbacks.length; i < l; i++) {
       var callback = callbacks[i];
-      callback.apply(this);
+      callback.apply(this, args);
     }
   }
 }
