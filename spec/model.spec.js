@@ -54,5 +54,12 @@ describe("barebone", function() {
             expect(events.length).toBe(1);
         });
 
+        it('trigger', function() {
+            var m = new Barbone.Model();
+            var winning = false;
+            m.bind('winning', function() {winning = true;})
+            m.trigger('winning');
+            expect(winning).toBe(true);
+        });
     });
 });

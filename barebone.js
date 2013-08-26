@@ -34,6 +34,15 @@ Barebone.Events = {
     this.events[event] || (this.events[event] = [])
     this.events[event].push(callback);
   },
+
+  trigger: function(event) {
+    var callbacks = this.events[event];
+
+    for (i = 0, l = callbacks.length; i < l; i++) {
+      var callback = callbacks[i];
+      callback.apply();
+    }
+  }
 }
 _.extend(Barebone.Model.prototype, Barebone.Events);
 
