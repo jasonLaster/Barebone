@@ -45,4 +45,14 @@ describe("barebone", function() {
 		expect(m.get('foo')).toBe('bananas');
 	});
 
+    describe("events", function() {
+        it('bind', function() {
+            var m = new Barbone.Model();
+            var winning;
+            m.bind('winning', function() {winning})
+            var events = m.events['winning'];
+            expect(events.length).toBe(1);
+        });
+
+    });
 });

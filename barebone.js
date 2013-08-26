@@ -6,6 +6,7 @@ var Barebone = {};
 Barebone.Model = function(attributes) {
   attributes || (attributes = {});
 
+  this.events = {};
   this.attributes = {};
   this.set(this.defaults);
   this.initialize(attributes);
@@ -25,6 +26,16 @@ _.extend(Barebone.Model.prototype, {
   }
 
 });
+
+
+Barebone.Events = {
+  bind: function(event, callback) {
+    console.log()
+    this.events[event] || (this.events[event] = [])
+    this.events[event].push(callback);
+  },
+}
+_.extend(Barebone.Model.prototype, Barebone.Events);
 
 
 Barebone.Model.extend = extend;
