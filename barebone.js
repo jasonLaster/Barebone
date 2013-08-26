@@ -7,6 +7,7 @@ Barebone.Model = function(attributes) {
   attributes || (attributes = {});
 
   this.attributes = {};
+  this.set(this.defaults);
   this.initialize(attributes);
 }
 

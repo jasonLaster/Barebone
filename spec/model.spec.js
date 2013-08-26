@@ -14,6 +14,20 @@ describe("barebone", function() {
 		expect(init.get('foo')).toBe('bananas');
 	});
 
+	it('defaults', function() {
+		var values = {
+			foo: 'bananas',
+			bars: 'pears'
+		};
+
+		var Def = Barbone.Model.extend({
+			defaults: values
+		});
+
+		var def = new Def();
+		expect(def.attributes).toEqual(values);
+	});
+
 	it('set', function() {
 		var values = {
 			foo: 'bananas',
