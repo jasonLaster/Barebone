@@ -3,6 +3,17 @@ Barbone = require(__dirname + '/../barebone');
 
 describe("barebone", function() {
 
+	it('initialize', function() {
+		var Init = Barbone.Model.extend({
+			initialize: function(attributes) {
+				this.attributes.foo = attributes.foo;
+			}
+		});
+
+		var init = new Init({foo: 'bananas'});
+		expect(init.get('foo')).toBe('bananas');
+	});
+
 	it('set', function() {
 		var values = {
 			foo: 'bananas',

@@ -1,12 +1,18 @@
 var _ = require(__dirname + '/vendor/underscore');
+var extend = require(__dirname + '/lib/extend');
 var Barebone = {};
 
 
-Barebone.Model = function() {
+Barebone.Model = function(attributes) {
+  attributes || (attributes = {});
+
   this.attributes = {};
+  this.initialize(attributes);
 }
 
 _.extend(Barebone.Model.prototype, {
+
+  initialize: function() {},
 
   set: function(attributes) {
     _.extend(this.attributes, attributes);
@@ -20,4 +26,5 @@ _.extend(Barebone.Model.prototype, {
 });
 
 
+Barebone.Model.extend = extend;
 module.exports = Barebone;
