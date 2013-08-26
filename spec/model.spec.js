@@ -39,6 +39,15 @@ describe("barebone", function() {
 		expect(ret).toBe(m);
 	});
 
+    it('set trigger changes', function() {
+        var m = new Barbone.Model();
+        var changed = false;
+        m.bind('change:foo', function() {changed = true;})
+
+        m.set({foo: 'bananas'});
+        expect(changed).toBe(true);
+    });
+
 	it('get', function() {
 		var m = new Barbone.Model();
 		m.set({foo: 'bananas'});
