@@ -14,4 +14,10 @@ describe("barebone", function() {
 		expect(ret).toBe(m);
 	});
 
+	it('get', function() {
+		var m = new Barbone.Model();
+		m.set({foo: 'bananas'});
+		expect(m.get('foo')).toBe('bananas');
+	});
+
 });
